@@ -63,8 +63,7 @@ urls = [
 
 def get_data(url):
     res = requests.get(url)
-    m = reu.search(res.text)
-    if m:
+    if m := reu.search(res.text):
         return dict(cran=url, github=m.group(0), repo=m.group(1))
     else:
         return dict(cran=url, github='', repo='')
